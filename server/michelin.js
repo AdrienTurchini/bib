@@ -9,9 +9,9 @@ const cheerio = require('cheerio');
 const parse = data => {
   const $ = cheerio.load(data);
   const name = $('.section-main h2.restaurant-details__heading--title').text();
-  const experience = $('#experience-section > ul > li:nth-child(2)').text();
-
-  return {name, experience};
+  //const experience = $('#experience-section > ul > li:nth-child(2)').text();
+  //const phone = $('span.flex-fill').first().text();
+  return {name};
 };
 
 /**
