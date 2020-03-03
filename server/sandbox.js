@@ -15,10 +15,8 @@ var fs = require('fs');
 async function sandbox(searchLink = rechercheBib) {
 
   try {
-    console.log(`🕵️‍♀️  browsing ${searchLink} source`);
-
-    
-    // MICHELIN
+    //////////////// MICHELIN ////////////////
+    console.log(`🕵️‍♀️  browsing michelin source, please wait it can takes a while`);
 
     // get number of pages for michelin bib gourmand restaurants
     const nbpage = await michelin.scrapeFirstSearchPage('https://guide.michelin.com/fr/fr/restaurants/bib-gourmand/');
@@ -38,7 +36,7 @@ async function sandbox(searchLink = rechercheBib) {
       listOfRestauDetails.push(restaurant);
     }
 
-    // ecrire data 
+    // write data in a json file
     var fs = require('fs');
     fs.writeFileSync('./bibRestaurants.json', JSON.stringify(listOfRestauDetails, null, 4), (err) => {
       if (err) {
@@ -50,7 +48,8 @@ async function sandbox(searchLink = rechercheBib) {
 
 
 
-    // Maitre restaurateurs
+    //////////////// MAITRE RESTAURATEURS ////////////////
+    console.log(`🕵️‍♀️  browsing Maire Restaurateurs source, please wait it can takes a while`);
 
     // get the number of pages for Maitre Restaurateurs
     const nbpage2 = await maitrerestaurateurs.scrapeFirstSearchPage(1);
@@ -71,12 +70,7 @@ async function sandbox(searchLink = rechercheBib) {
       listOfMrRestauDetails.push(restau);
     }
 
-  
-    // test one MR
-    //const restau = await maitrerestaurateurs.scrapeRestaurant('https://www.maitresrestaurateurs.fr/profil/3772');
-
-    
-    // ecrire data 
+    // write data 
     var fs = require('fs');
     fs.writeFileSync('./maitresRestaurateurs.json', JSON.stringify(listOfMrRestauDetails, null, 4), (err) => {
       if (err) {
@@ -86,10 +80,9 @@ async function sandbox(searchLink = rechercheBib) {
       console.log("File has been created");
     });
 
-    
-
-
-    // lire fichiers et comparer les deux listes
+    //////////////// Read the two json files created before and write two files with the restaurants which got both, one file when the phone number is the same, one when the phone number is different but the name and the city are the same ////////////////
+    console.log(`🕵️‍♀️  Creating two json files of restaurants regarding to the same phone number and to the same city and name if different phone number`);
+ 
     var mrRestau = [];
     var bibRestau = [];
 
@@ -106,7 +99,6 @@ async function sandbox(searchLink = rechercheBib) {
       console.log("error");
     }
     
-
     var listOfPhone = [];
     var listOfNameCity = [];
     //var listOfName = [];
@@ -130,8 +122,6 @@ async function sandbox(searchLink = rechercheBib) {
         */
       }
     }
-
-    
 
     // list of restaurants where we can find the same phone number in the both list
     fs.writeFileSync('./listOfPhone.json', JSON.stringify(listOfPhone, null, 4), (err) => {
@@ -162,16 +152,10 @@ async function sandbox(searchLink = rechercheBib) {
     });
 */
     process.exit(0);
-
-
   } catch (e) {
     console.error(e); 
     process.exit(1);
   }
 }
-
-
-
 const [, , searchLink] = process.argv;
-
 sandbox(searchLink);
