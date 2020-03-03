@@ -1,0 +1,20 @@
+[
+    {
+        "name": "comptoirdesvoyageurs",
+        "phoneBib": "0298917074",
+        "phoneMr": "0298817074",
+        "city": "locronan"
+    },
+    {
+        "name": "lamaison",
+        "phoneBib": "0545352177",
+        "phoneMr": "no phone",
+        "city": "cognac"
+    },
+    {
+        "name": "pomze",
+        "phoneBib": "0142656583",
+        "phoneMr": "0142658087",
+        "city": "paris"
+    }
+]
