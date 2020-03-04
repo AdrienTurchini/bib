@@ -14,6 +14,8 @@ You can then run "npm start" in the app folder again to get the refreshed list o
 
 The scraping was made using javascript, the HTML is displayed using javascript with react.js and CSS using bulma.
 
+BY CAREFUL : on this day (04/03/2020), the Maître Restaurateur website is not working correctly and is not displaying the list of the restaurants. If you try to refresh the list by running the sandbox, it will write over the existing json files containing the list from the end of February 2020 and you won't be able to get Maître Restaurateurs restaurants and the program will return 0 matches with Bib Gourmand Restaurants. 
+
 ![bib](./img/bib.jpg)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
