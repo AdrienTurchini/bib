@@ -56,6 +56,7 @@ const restauDetails = data => {
 
   // get name
   var name = $('.section-main h2.restaurant-details__heading--title').text();
+  var fullName = name;
   name = name.toLocaleLowerCase();
   name = name.replace('�',"o").replace('ô','o').replace(/\s/g,"").replace('-',"").replace('-',"").replace('\'',"").replace('ö','o').replace('ù','u').replace('û','u').replace('ü','u').replace("î","i").replace("ï","i").replace("à","a").replace("â","a").replace("ä","a").replace("é","e").replace("è","e").replace("ê","e").replace("ë","e").replace("ç","c");
 
@@ -75,7 +76,15 @@ const restauDetails = data => {
   city = city.replace(/é/g, "");
   city = city.replace(/-/g, "");
 
-  return { name, phone, city };
+  // get address
+  var address = $('body > main > div.restaurant-details > div.container > div > div.col-xl-8.col-lg-7 > section.section.section-main.restaurant-details__main > div.restaurant-details__heading.d-none.d-lg-block > ul > li:nth-child(1)').text().trim();
+  var testGoodAddress = address.split(" ");
+  if(testGoodAddress[testGoodAddress.length - 1] != "France")
+  {
+    var address = $('body > main > div.restaurant-details > div.container > div > div.col-xl-8.col-lg-7 > section.section.section-main.restaurant-details__main > div.restaurant-details__heading.d-none.d-lg-block > ul > li:nth-child(2)').text().trim();
+  }
+
+  return { name, phone, city, address, fullName};
 };
 
 // return links of restaurants for one page
