@@ -2,6 +2,18 @@
 
 > Maître Restaurateur x Bib Gourmand
 
+To get the list of Maître Restaurateur x Bib Gourmand, go to /bib/App folder in terminal and run "npm start", it will open a localhost: on your web browser and display the list of the restaurants (name, phone, address). 
+
+If you click on the name of one restaurant, you will be redirected to the Michelin website of the restaurant.
+The list is composed of two parts, each one is sorted by name. In the first part of the list, the restaurants were matched using their phone number. In the other part of the list, the phone number was different or there was no phone number so I used their name + city in order to match them, it explains why you can find two different phone numbers in the list.
+
+If you want to get refresh the list from Maître Restaurateur and Michelin website, you can do so by running the sandbox.js located in /bib/server using the command "node sandbox.js".
+It will get the list of the restaurants from the websites, then scrap the information for each restaurant, write two json files containing the list and the details of the restaurants from Michelin and Maître Restaurateur. Then the it will read the files created, compare the phones, names and city and create two json file in /bib/server and also two in /bib/App/src containing the restaurants where the phone matches and where the name and city matches.
+
+You can then run "npm start" in the app folder again to get the refreshed list of the restaurants.
+
+The scraping was made using javascript, the HTML is displayed using javascript with react.js and CSS using bulma.
+
 ![bib](./img/bib.jpg)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
